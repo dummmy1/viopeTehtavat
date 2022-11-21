@@ -22,8 +22,9 @@ int main(){
     cin >> opiskelija1.sukuNimi;
     cout << "Anna opiskelijan opiskelijanumero: ";
     cin >> opiskelija1.opiskelijanumero;
-    cout << "Anna opisjelijan opintopisteet: ";
+    cout << "Anna opiskelijan opintopisteet: ";
     cin >> opiskelija1.opintoPisteet;
+    cout << "\n";
 
     cout << "Etunimi: "<<opiskelija1.etuNimi << "\n";
     cout << "Sukunimi: "<<opiskelija1.sukuNimi << "\n";
