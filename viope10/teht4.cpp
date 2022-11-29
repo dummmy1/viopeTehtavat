@@ -19,15 +19,15 @@ struct Opiskelija {
 Opiskelija* luoOpiskelijat(int lkm) { // 
     Opiskelija* opiskelijatArr = new Opiskelija[lkm]; //new tekee dynaamisen taulukon joka on lkm pitkä ja palauttaa osoittimen taulukkoon joka on tallennettu muistiin opiskelijatArr muuttujaan
     for (int i = 0; i < lkm; i++) {
-        cout << "Anna etunimi: ";
+        cout << "Anna opiskelijan etunimi: ";
         cin >> opiskelijatArr[i].etuNimi;
-        cout << "Anna sukunimi: ";
+        cout << "Anna opiskelijan sukunimi: ";
         cin >> opiskelijatArr[i].sukuNimi;
-        cout << "Anna opiskelijanumero: ";
+        cout << "Anna opiskelijan opiskelijanumero: ";
         cin >> opiskelijatArr[i].opiskelijanumero;
-        cout << "Anna opintopisteet: ";
+        cout << "Anna opiskelijan opintopisteet: ";
         cin >> opiskelijatArr[i].opintoPisteet;
-        cout << "-------------------\n";
+
     }
     return opiskelijatArr; // palauttaa osoittimen taulukkoon
 }
@@ -46,11 +46,14 @@ int main() {
     // Tulostetaan opiskelijoiden tiedot
     for (int i = 0; i < lukuMaara; i++) {
         cout << "\n";
-        cout << "Opiskelijan numero " << i+1 << " tiedot:\n";
-        cout << opiskelijat[i].etuNimi << endl;
-        cout << opiskelijat[i].sukuNimi << endl;
-        cout << opiskelijat[i].opiskelijanumero << endl;
-        cout << opiskelijat[i].opintoPisteet << endl;
+        cout << "\n";
+
+        cout << "Opiskelijan numero " << i+1 << " tiedot.\n";
+        cout << "Etunimi: " << opiskelijat[i].etuNimi << endl;
+        cout << "Sukunimi: " <<opiskelijat[i].sukuNimi << endl;
+        cout << "Opiskelijanumero: " <<opiskelijat[i].opiskelijanumero << endl;
+        cout << "Opintopisteet: " <<opiskelijat[i].opintoPisteet << endl;
+
     }
   
     return 0;
