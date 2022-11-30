@@ -33,8 +33,6 @@ Opiskelija* luoOpiskelijat(int lkm) { //
 }
 
 
-
-
 int main() {
     int lukuMaara;
     cout << "Kuinka monelle opiskelijalle luodaan tiedot? (MAX 20): ";

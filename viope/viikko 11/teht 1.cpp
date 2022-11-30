@@ -44,21 +44,19 @@ int calculator(string& roomens){
 
         if (i+1 < roomens.length()){ //katsoo onko seuraavaa merkkiä olemassa
             int sym2 = roomaValue(roomens[i+1]);
-
+            
             if (sym1 >= sym2){
                 vastaus += sym1;
-                
             }
+
             else{
                 vastaus += sym2 - sym1; // esim. IV = 5 - 1
                 i++; // skippaa älä kato sym2 uudestaan
             }
         }
         else{
-            vastaus += sym1;
-            
+            vastaus += sym1;   
         }
-
     }
     return vastaus;
 

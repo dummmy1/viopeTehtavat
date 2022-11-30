@@ -12,36 +12,26 @@ struct Valtio {
 
 
 int main(){
-    Valtio valtio1;
-    cout << "Anna valtion 1 nimi: ";
-    cin >> valtio1.Nimi;
-    cout << "Anna valtion 1 asukasluku: ";
-    cin >> valtio1.asukasluku;
-    cout << "Anna valtion 1 pinta-ala: ";
-    cin >> valtio1.pintaAla;
-    cout << "Anna valtion 1 johtaja: ";
-    cin >> valtio1.johtaja;
+    //int i = 0;
+    Valtio valtio[2];
 
-    Valtio valtio2;
-    cout << "Anna valtion 2 nimi: ";
-    cin >> valtio2.Nimi;
-    cout << "Anna valtion 2 asukasluku: ";
-    cin >> valtio2.asukasluku;
-    cout << "Anna valtion 2 pinta-ala: ";
-    cin >> valtio2.pintaAla;
-    cout << "Anna valtion 2 johtaja: ";
-    cin >> valtio2.johtaja;
+    for (int i= 0; i < 2;i++){
+        cout << "Anna valtion" << i << "nimi: ";
+        cin >> valtio[1].Nimi;
+        cout << "Anna valtion" << i << "asukasluku: ";
+        cin >> valtio[1].asukasluku;
+        cout << "Anna valtion" << i << "pinta-ala: ";
+        cin >> valtio[1].pintaAla;
+        cout << "Anna valtion" << i << "johtaja: ";
+        cin >> valtio[1].johtaja;
 
-    cout <<" Valtio numero 1\n";
-    cout << "Nimi: "<<valtio1.Nimi << "\n";
-    cout << "Asukasluku: "<<valtio1.asukasluku << "\n";
-    cout << "Pinta-ala: "<<valtio1.pintaAla << "\n";
-    cout << "Johtaja: "<<valtio1.johtaja << "\n";
-    cout <<"\n";
-    cout <<" Valtio numero 2\n";
-    cout << "Nimi: "<<valtio2.Nimi << "\n";
-    cout << "Asukasluku: "<<valtio2.asukasluku << "\n";
-    cout << "Pinta-ala: "<<valtio2.pintaAla << "\n";
-    cout << "Johtaja: "<<valtio2.johtaja << "\n";
+    }
+
+    for (int i = 0;i < 2; i++){
+        cout << "Valtion" << i << "nimi: " << valtio[1].Nimi << endl;
+        cout << "Valtion" << i << "asukasluku: " << valtio[1].asukasluku << endl;
+        cout << "Valtion" << i << "pinta-ala: " << valtio[1].pintaAla << endl;
+        cout << "Valtion" << i << "johtaja: " << valtio[1].johtaja << endl;
+    }
 
 }
