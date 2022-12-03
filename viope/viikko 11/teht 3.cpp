@@ -5,17 +5,40 @@
 #include <cstdlib>
 #include <algorithm>
 #include <iterator>
-#include <windows.system.h>
 #include <windows.h>
-
+#include <windows.system.h>
+#include <limits>
+#include <sstream>
+#include <climits> 
+#include <numeric>
+#undef max
 
 using namespace std;
 
+//int lottoNumbersAmount = 40;
+
+
+void takeNumber(int& annettu, int size, string teksti, int iter){
+    //cout << "suck my nuts niga";
+    
+	while (!(cin >> annettu) || !(annettu > 0 && annettu <= size)) {
+
+		cin.clear(); //clear bad input flag
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //discard input
+		cout << teksti << size <<" valilla!\n\n";
+
+        if (iter > 0){
+            cout << "Numero " << iter+1 << ": "; 
+        }
+	}
+
+
+}
 
 
 
 void voittoChecker(vector<int> lottoNums, vector<int> voittoNums){
-    cout << "\ntulee tanne asti!\n";
+    //cout << "\ntulee tanne asti!\n";
     int lottoLaskuri = 0;
     int lisaLaskuri = 0;
 
@@ -73,15 +96,17 @@ void voittoChecker(vector<int> lottoNums, vector<int> voittoNums){
             cout << "Sait " << lottoLaskuri << " + " << lisaLaskuri << " oikein!\n";
             cout << "Olet voittanut 10 000 000 euroa!\n";
             break;
+
         default:
             cout << "Sait " << lottoLaskuri << " + " << lisaLaskuri << " oikein!\n";
             cout << "Et voittanut mitaan!\n";
             break;
-            
+
         }
         //cout << "tuleeko tanne?";
-
 }
+
+
 
 
 
@@ -140,17 +165,72 @@ vector<int> voittoNumerot(){
 void arvoNumerot(){
     vector<int> lottoNums(10,0);
 
+
     int randNum;
 
     cout << "\n";
 
     for (int i = 0; i < lottoNums.size(); i++){
+
+        
+
         randNum = rand() % 39 + 1;
         while (count(lottoNums.begin(), lottoNums.end(), randNum)){
             randNum = rand() % 39 + 1;
             
         }
         lottoNums[i] = randNum;
+    }
+
+    cout << "Lottorivisi on ";
+
+    for (int i = 0; i < 7; i++){
+        cout << lottoNums[i] << ", ";
+    }
+
+    cout << "ja bonusnumerot ";
+
+    for (int i = 7;i < 10; i++){
+        if (i < 9){
+            cout << lottoNums[i] << ", ";
+        }
+        else cout << lottoNums[i] << ".";
+    }
+    
+    cout << "\n";
+
+    vector<int> voittoVektori = voittoNumerot();
+
+    voittoChecker(lottoNums,voittoVektori);
+
+    
+    cout << "\n--------------------------------------------------------------------------------\n\n";	
+
+}
+
+
+void arvoItseNumerot(){
+    vector<int> lottoNums(10,0);
+    int valintaNum;
+
+
+    cout << "Anna kymmenen (10) lottonumeroa: \n";
+    //cin >> valintaNum;
+
+    for (int i = 0; i < lottoNums.size(); i++){
+        cout << "Numero " << i+1 << ": ";
+        takeNumber(valintaNum, 40, "Ei ole numero 1-",i);
+        
+        
+
+        while (count(lottoNums.begin(), lottoNums.end(), valintaNum)){
+            cout << "Numero on jo kaytetty!\nNumero " << i+1 << ": ";
+            takeNumber(valintaNum, 40, "Ei ole numero 1-",i);
+            
+        }
+        
+        cout << "\n";
+        lottoNums[i] = valintaNum;
     }
 
     cout << "Lottorivisi on ";
@@ -191,22 +271,8 @@ int main(){
     while (true){
         cout << "Mita haluaisit tehda? (Syota numero 1-4)\n";
         cout << "1: Katso palkintosummat\n2: Pelaa koneen arpomalla rivilla\n3: Pelaa omilla numeroilla\n4: Lopeta pelaaminen\n";
-
-        cin >> valinta;
-        
-        while (cin.fail()) {
-            cout << "Ei ole numero 1-4\n";
-            cin.clear();
-            cin.ignore(256, '\n');	
-            cout << "1: Katso palkintosummat\n2: Pelaa koneen arpomalla rivilla\n3: Pelaa omilla numeroilla\n4: Lopeta pelaaminen\n";
-            cin >> valinta;
-            if (!cin.fail() && valinta > 0 && valinta <= 4){
-
-                break;
-            }	
-            
-        }
-
+        //cin >> valinta;
+        takeNumber(valinta, 4, "Ei ole numero 1-4 valilla", 0);
 
 		switch (valinta) { // switch case mitä tehdaan valitun numeron mukaan
 		case 1:
@@ -222,6 +288,7 @@ int main(){
 		case 3:
             cout << "--------------------------------------------------------------------------------\n";	
             cout << "\n";
+            arvoItseNumerot();
 			break;
         case 4:
             return 0;
